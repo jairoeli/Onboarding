@@ -7,6 +7,7 @@
 * Pure programmatic views approach
 * Skipable support
 * Right-to-left support
+* Extend UserDefaults with the protocol conformance
 
 ## License
 
