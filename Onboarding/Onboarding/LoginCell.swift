@@ -23,7 +23,7 @@ class LoginCell: UICollectionViewCell {
   
   weak var delegate: LoginControllerDelegate?
   
-  let logoImageView = UIImageView {
+  let logoImageView = UIImageView() <== {
     $0.image = #imageLiteral(resourceName: "logo")
   }
   

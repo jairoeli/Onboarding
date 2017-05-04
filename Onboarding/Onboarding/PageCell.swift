@@ -51,19 +51,19 @@ class PageCell: UICollectionViewCell {
   
   // MARK: - Properties
   
-  let imageView = UIImageView {
+  let imageView = UIImageView() <== {
     $0.image = #imageLiteral(resourceName: "page1")
     $0.contentMode = .scaleAspectFill
     $0.clipsToBounds = true
   }
   
-  let textView = UITextView {
+  let textView = UITextView() <== {
     $0.text = "SAMPLE TEXT FOR NOW"
     $0.isEditable = false
     $0.contentInset = UIEdgeInsets(top: 14, left: 0, bottom: 0, right: 0)
   }
   
-  let lineSeperatorView = UIView {
+  let lineSeperatorView = UIView() <== {
     $0.backgroundColor = UIColor(white: 0.9, alpha: 1)
   }
   

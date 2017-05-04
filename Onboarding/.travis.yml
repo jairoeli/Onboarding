@@ -1,0 +1,5 @@
+language: objective-c
+osx_image: xcode68.3
+xcode_project: Onboarding.xcodeproj
+xcode_scheme: Onboarding
+xcode_sdk: iphonesimulator
