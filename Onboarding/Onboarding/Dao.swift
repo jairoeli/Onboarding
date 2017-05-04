@@ -28,3 +28,11 @@ extension Dao where Self: UIButton {
   }
   
 }
+
+infix operator <==
+
+@discardableResult
+public func <== <T>(x: T, f: (T) -> ()) -> T {
+  f(x)
+  return x
+}
