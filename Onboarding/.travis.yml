@@ -1,7 +1,7 @@
 language: objective-c
-osx_image: xcode68.3
+osx_image: xcode8.3
 xcode_project: Onboarding.xcodeproj
-xcode_scheme: Onboarding
-xcode_sdk: iphonesimulator
+xcode_scheme: OnboardingTests
+xcode_sdk: iphonesimulator10.2
 script:
 - xcodebuild -workspace Onboarding.xcodeproj -scheme Onboarding -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 7,OS=10.2' build test | xcpretty
