@@ -1,7 +1,9 @@
 language: objective-c
 osx_image: xcode8.3
-xcode_project: Onboarding.xcodeproj
-xcode_scheme: OnboardingTests
-xcode_sdk: iphonesimulator10.2
+xcode_project: path/to/Onboarding.xcodeproj
+xcode_scheme: Onboarding
+before_install:
+- brew update
+- brew install xctool
 script:
-- xcodebuild -workspace Onboarding.xcodeproj -scheme Onboarding -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 7,OS=10.2' build test | xcpretty
+- xctool -workspace Onboarding.xcodeproj -scheme Onboarding -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 7,OS=10.2' build test | xcpretty
