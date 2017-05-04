@@ -1,6 +1,7 @@
+rvm: 2.2
 language: objective-c
 osx_image: xcode8.3
-xcode_project: path/to/Onboarding.xcodeproj
+xcode_project: Onboarding.xcodeproj
 xcode_scheme: Onboarding
 before_install:
 - brew update
