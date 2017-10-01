@@ -28,7 +28,7 @@ extension LoginController: LoginControllerDelegate {
   
   // MARK: - Skip & Next Action
   
-  func nextPage() {
+  @objc func nextPage() {
     // we are on the last page
     if pageControl.currentPage == pages.count {
       return
@@ -48,15 +48,15 @@ extension LoginController: LoginControllerDelegate {
     pageControl.currentPage += 1
   }
   
-  func skip() {
+  @objc func skip() {
     pageControl.currentPage = pages.count - 1
     nextPage()
   }
   
   fileprivate func moveControlConstraintsOffScreen() {
-    pageControlBottomAnchor?.constant = 40
-    skipButtonTopAnchor?.constant = 40
-    nextButtonTopAnchor?.constant = 40
+    pageControlBottomAnchor?.constant = 60
+    skipButtonTopAnchor?.constant = 60
+    nextButtonTopAnchor?.constant = 60
   }
   
   // MARK: - Keyboard
@@ -66,13 +66,13 @@ extension LoginController: LoginControllerDelegate {
     NotificationCenter.default.addObserver(self, selector: #selector(keyboardHide), name: .UIKeyboardWillHide, object: nil)
   }
   
-  func keyboardShow() {
+  @objc func keyboardShow() {
     spring(duration: 0.5) {
       self.view.frame = CGRect(x: 0, y: -60, width: self.view.frame.width, height: self.view.frame.height)
     }
   }
   
-  func keyboardHide() {
+  @objc func keyboardHide() {
     spring(duration: 0.5) {
       self.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
     }

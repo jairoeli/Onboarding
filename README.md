@@ -1,5 +1,7 @@
 # Onboarding
 
+![Swift](https://img.shields.io/badge/Swift-4.0-orange.svg)
+
 ![walkthrough](https://cloud.githubusercontent.com/assets/16951799/25067998/50dcb462-221a-11e7-8e76-dc57c2c1a03c.png)
 
 ## Features

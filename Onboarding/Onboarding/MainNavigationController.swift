@@ -30,7 +30,7 @@ class MainNavigationController: UINavigationController {
     return UserDefaults.Account.bool(forKey: .isUserLoggedIn)
   }
   
-  func showLoginController() {
+  @objc func showLoginController() {
     let loginController = LoginController()
     
     present(loginController, animated: true, completion: {
