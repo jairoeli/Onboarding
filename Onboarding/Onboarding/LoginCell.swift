@@ -73,7 +73,7 @@ class LoginCell: UICollectionViewCell {
   }()
   
   // MARK: - Handle login
-  func handleLogin() {
+  @objc func handleLogin() {
     delegate?.finishLoggingIn()
   }
   
