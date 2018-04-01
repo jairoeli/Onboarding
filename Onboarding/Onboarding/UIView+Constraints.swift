@@ -9,7 +9,7 @@
 import UIKit
 
 //
-// Solution based on http://chris.eidhof.nl/post/micro-autolayout-dsl/
+// Solution based on http://chris.eidhof.nl/post/micro-autolayout-dsl/ & https://github.com/simoneconnola/Constrainable
 //
 
 extension NSLayoutConstraint {
