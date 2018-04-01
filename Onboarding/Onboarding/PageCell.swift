@@ -72,9 +72,8 @@ class PageCell: UICollectionViewCell {
   }
 
   private func attachViews() {
-    addSubview(imageView)
-    addSubview(textView)
-    addSubview(lineSeperatorView)
+    let subviews: [UIView] = [imageView, textView, lineSeperatorView]
+    add(subviews)
     addLayoutGuide(container)
   }
   

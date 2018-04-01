@@ -74,11 +74,9 @@ class LoginController: UIViewController, UICollectionViewDelegate, UICollectionV
   override func viewDidLoad() {
     super.viewDidLoad()
     collectionView.showsHorizontalScrollIndicator = false
-    
-    view.addSubview(collectionView)
-    view.addSubview(pageControl)
-    view.addSubview(skipButton)
-    view.addSubview(nextButton)
+
+    let subviews: [UIView] = [collectionView, pageControl, skipButton, nextButton]
+    view.add(subviews)
     view.addLayoutGuide(container)
     
     observeKeyboardNotificaitons()

@@ -83,10 +83,8 @@ class LoginCell: UICollectionViewCell {
   }
 
   private func attachViews() {
-    addSubview(logoImageView)
-    addSubview(emailTextField)
-    addSubview(passwordTextField)
-    addSubview(loginButton)
+    let subviews: [UIView] = [logoImageView, emailTextField, passwordTextField, loginButton]
+    add(subviews)
     addLayoutGuide(container)
     addLayoutGuide(spacer)
   }
