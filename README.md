@@ -6,7 +6,7 @@
 
 ## Features
 
-* Pure programmatic views approach
+* Programmatic auto-layout that supports [KeyPath–based declarative layout](http://chris.eidhof.nl/post/micro-autolayout-dsl/)
 * Skipable support
 * Right-to-left support
 * Extend UserDefaults with the protocol conformance
