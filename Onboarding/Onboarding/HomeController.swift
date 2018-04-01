@@ -13,6 +13,8 @@ class HomeController: UIViewController {
   let imageView = UIImageView {
     $0.image = #imageLiteral(resourceName: "home")
   }
+
+  let container = UILayoutGuide()
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -22,7 +24,20 @@ class HomeController: UIViewController {
     navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Sign Out", style: .plain, target: self, action: #selector(handleSignOut))
     
     view.addSubview(imageView)
-    _ = imageView.anchors(view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, topConstant: 64, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 0)
+    view.addLayoutGuide(container)
+
+    container.activate(
+      constraint(edgesTo: view.layoutMarginsGuide)
+    )
+
+    imageView.activate([
+      constraint(same: \.topAnchor, as: container),
+      constraint(same: \.leadingAnchor, as: self.view),
+      constraint(same: \.trailingAnchor, as: self.view),
+      constraint(same: \.bottomAnchor, as: container)
+    ])
+
+
   }
   
   @objc func handleSignOut() {

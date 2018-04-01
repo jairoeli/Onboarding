@@ -42,6 +42,8 @@ class LoginController: UIViewController, UICollectionViewDelegate, UICollectionV
   var nextButtonTopAnchor: NSLayoutConstraint?
   
   // MARK: - UI Elements
+
+  let container = UILayoutGuide()
   
   lazy var pageControl: UIPageControl = {
     let pc = UIPageControl()
@@ -77,11 +79,12 @@ class LoginController: UIViewController, UICollectionViewDelegate, UICollectionV
     view.addSubview(pageControl)
     view.addSubview(skipButton)
     view.addSubview(nextButton)
+    view.addLayoutGuide(container)
     
     observeKeyboardNotificaitons()
     layoutAnchors()
-    collectionView.anchorToTop(view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor)
-    
+    collectionView.activate(constraint(edgesTo: self.view))
+
     registerCells()
   }
   
@@ -95,23 +98,31 @@ class LoginController: UIViewController, UICollectionViewDelegate, UICollectionV
   // MARK: - Anchors
   
   fileprivate func layoutAnchors() {
-    if #available(iOS 11.0, *) {
-      pageControlBottomAnchor = pageControl.anchors(nil, left: view.leftAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, right: view.rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 40)[1]
-    } else {
-      pageControlBottomAnchor = pageControl.anchors(nil, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 40)[1]
-    }
-    
-    if #available(iOS 11.0, *) {
-      skipButtonTopAnchor = skipButton.anchors(nil, left: nil, bottom: view.safeAreaLayoutGuide.bottomAnchor, right: nil, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 60, heightConstant: 40).first
-    } else {
-      skipButtonTopAnchor = skipButton.anchors(nil, left: nil, bottom: view.bottomAnchor, right: nil, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 60, heightConstant: 40).first
-    }
-    
-    if #available(iOS 11.0, *) {
-      nextButtonTopAnchor = nextButton.anchors(nil, left: nil, bottom: view.safeAreaLayoutGuide.bottomAnchor, right: view.rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 60, heightConstant: 40).first
-    } else {
-      nextButtonTopAnchor = nextButton.anchors(nil, left: nil, bottom: view.bottomAnchor, right: view.rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 60, heightConstant: 40).first
-    }
+      pageControlBottomAnchor = pageControl.anchors(
+        top: nil,
+        left: view.leftAnchor,
+        bottom: view.safeAreaLayoutGuide.bottomAnchor,
+        right: view.rightAnchor,
+        heightConstant: 40
+      )[1]
+
+      skipButtonTopAnchor = skipButton.anchors(
+        top: nil,
+        left: nil,
+        bottom: view.safeAreaLayoutGuide.bottomAnchor,
+        right: nil,
+        widthConstant: 60,
+        heightConstant: 40
+      ).first
+
+      nextButtonTopAnchor = nextButton.anchors(
+        top: nil,
+        left: nil,
+        bottom: view.safeAreaLayoutGuide.bottomAnchor,
+        right: view.safeAreaLayoutGuide.rightAnchor,
+        widthConstant: 60,
+        heightConstant: 40
+      ).first
   }
   
   // MARK: - Collection view data source

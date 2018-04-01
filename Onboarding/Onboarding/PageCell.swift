@@ -12,6 +12,7 @@ class PageCell: UICollectionViewCell {
   
   override init(frame: CGRect) {
     super.init(frame: frame)
+    attachViews()
     setupViews()
   }
   
@@ -35,14 +36,14 @@ class PageCell: UICollectionViewCell {
       
       let color = UIColor.rgb(red: 43, green: 46, blue: 74)
       
-      let attributedText = NSMutableAttributedString(string: page.title, attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 20, weight: UIFont.Weight.medium), NSAttributedStringKey.foregroundColor: color])
+      let attributedText = NSMutableAttributedString(string: page.title, attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: DeviceSize.adjust(20, for: [.large: 22, .plus: 26]), weight: UIFont.Weight.medium), NSAttributedStringKey.foregroundColor: color])
       
-      attributedText.append(NSAttributedString(string: "\n\n\(page.message)", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14), NSAttributedStringKey.foregroundColor: color]))
+      attributedText.append(NSAttributedString(string: "\n\n\(page.message)", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: DeviceSize.adjust(16, for: [.large: 18, .plus: 20])), NSAttributedStringKey.foregroundColor: color]))
       
       let paragraphStyle = NSMutableParagraphStyle()
       paragraphStyle.alignment = .center
       
-      let length = attributedText.string.characters.count
+      let length = attributedText.string.count
       attributedText.addAttribute(NSAttributedStringKey.paragraphStyle, value: paragraphStyle, range: NSRange(location: 0, length: length))
       
       textView.attributedText = attributedText
@@ -50,15 +51,18 @@ class PageCell: UICollectionViewCell {
   }
   
   // MARK: - Properties
+
+  let container = UILayoutGuide()
   
   let imageView = UIImageView {
-    $0.image = #imageLiteral(resourceName: "page1")
+//    $0.image = #imageLiteral(resourceName: "page1")
     $0.contentMode = .scaleAspectFill
     $0.clipsToBounds = true
+    $0.backgroundColor = .red
   }
   
   let textView = UITextView {
-    $0.text = "SAMPLE TEXT FOR NOW"
+//    $0.text = "SAMPLE TEXT FOR NOW"
     $0.isEditable = false
     $0.contentInset = UIEdgeInsets(top: 14, left: 0, bottom: 0, right: 0)
   }
@@ -66,22 +70,44 @@ class PageCell: UICollectionViewCell {
   let lineSeperatorView = UIView {
     $0.backgroundColor = UIColor(white: 0.9, alpha: 1)
   }
-  
-  // MARK: - Setup
-  func setupViews() {
-    
+
+  private func attachViews() {
     addSubview(imageView)
     addSubview(textView)
     addSubview(lineSeperatorView)
-    
-    imageView.anchorToTop(topAnchor, left: leftAnchor, bottom: textView.topAnchor, right: rightAnchor)
-    
-    textView.anchorWithConstantsToTop(nil, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, topConstant: 0, leftConstant: 16, bottomConstant: 0, rightConstant: 16)
-    
-    textView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.3).isActive = true
-    
-    lineSeperatorView.anchorToTop(nil, left: leftAnchor, bottom: textView.topAnchor, right: rightAnchor)
-    lineSeperatorView.heightAnchor.constraint(equalToConstant: 1).isActive = true
+    addLayoutGuide(container)
+  }
+  
+  // MARK: - Setup
+  private func setupViews() {
+    container.activate(
+      constraint(edgesTo: self.layoutMarginsGuide)
+    )
+
+    imageView.activate([
+      constraint(same: \.topAnchor, as: container),
+      constraint(same: \.leadingAnchor, as: container),
+      constraint(same: \.trailingAnchor, as: container),
+      constraint(\.bottomAnchor, to: \.topAnchor, of: textView)
+    ])
+
+    textView.activate([
+      constraint(same: \.leadingAnchor, as: container, offset: 16),
+      constraint(same: \.trailingAnchor, as: container, offset: -16),
+      constraint(same: \.bottomAnchor, as: container),
+    ])
+
+    textView.heightAnchor.constraint(
+      equalTo: heightAnchor,
+      multiplier: DeviceSize.adjust(0.3, for: [.iphoneX: 0.2])
+    ).isActive = true
+
+    lineSeperatorView.activate([
+      constraint(same: \.leadingAnchor, as: self),
+      constraint(same: \.trailingAnchor, as: self),
+      constraint(\.bottomAnchor, to: \.topAnchor, of: textView),
+      constraint(\.heightAnchor, to: 1)
+    ])
   }
   
 }

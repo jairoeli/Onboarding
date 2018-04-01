@@ -12,6 +12,7 @@ class LoginCell: UICollectionViewCell {
   
   override init(frame: CGRect) {
     super.init(frame: frame)
+    attachViews()
     setupViews()
   }
   
@@ -25,8 +26,12 @@ class LoginCell: UICollectionViewCell {
   
   let logoImageView = UIImageView {
     $0.image = #imageLiteral(resourceName: "logo")
+    $0.contentMode = .scaleAspectFit
   }
-  
+
+  let container = UILayoutGuide()
+  let spacer = UILayoutGuide()
+
   lazy var emailTextField: LeftPaddedTextField = {
     let email = LeftPaddedTextField()
     email.placeholder = "Email"
@@ -76,26 +81,53 @@ class LoginCell: UICollectionViewCell {
   @objc func handleLogin() {
     delegate?.finishLoggingIn()
   }
-  
-  // MARK: - Set up
-  
-  func setupViews() {
-    
+
+  private func attachViews() {
     addSubview(logoImageView)
     addSubview(emailTextField)
     addSubview(passwordTextField)
     addSubview(loginButton)
-    
-    _ = logoImageView.anchors(centerYAnchor, left: nil, bottom: nil, right: nil, topConstant: -230, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 160, heightConstant: 160)
-    
-    logoImageView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-    
-    _ = emailTextField.anchors(logoImageView.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, topConstant: 16, leftConstant: 32, bottomConstant: 0, rightConstant: 32, widthConstant: 0, heightConstant: 50)
-    
-    _ = passwordTextField.anchors(emailTextField.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, topConstant: 16, leftConstant: 32, bottomConstant: 0, rightConstant: 32, widthConstant: 0, heightConstant: 50)
-    
-    _ = loginButton.anchors(passwordTextField.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, topConstant: 16, leftConstant: 32, bottomConstant: 0, rightConstant: 32, widthConstant: 0, heightConstant: 50)
-    
+    addLayoutGuide(container)
+    addLayoutGuide(spacer)
+  }
+  
+  // MARK: - Set up
+  
+  private func setupViews() {
+
+    container.activate(
+      constraint(edgesTo: self.layoutMarginsGuide)
+    )
+
+    logoImageView.activate([
+      constraint(\.heightAnchor, to: 160),
+      constraint(\.widthAnchor, to: 160),
+      constraint(same: \.centerXAnchor, as: container),
+      constraint(same: \.topAnchor, as: container, offset: DeviceSize.adjust(150, for: [.small: 50, .large: 120]))
+    ])
+
+    emailTextField.activate([
+      constraint(\.topAnchor, to: \.bottomAnchor, of: logoImageView, offset: 30),
+      constraint(\.heightAnchor, to: 50),
+      constraint(same: \.leadingAnchor, as: container, offset: 20),
+      constraint(same: \.trailingAnchor, as: container, offset: -20)
+    ])
+
+    passwordTextField.activate([
+      constraint(\.topAnchor, to: \.bottomAnchor, of: emailTextField, offset: 10),
+      constraint(\.heightAnchor, to: 50),
+      constraint(same: \.leadingAnchor, as: container, offset: 20),
+      constraint(same: \.trailingAnchor, as: container, offset: -20)
+    ])
+
+    loginButton.activate([
+      constraint(\.topAnchor, to: \.bottomAnchor, of: passwordTextField, offset: 10),
+      constraint(\.heightAnchor, to: 50),
+      constraint(same: \.leadingAnchor, as: container, offset: 20),
+      constraint(same: \.trailingAnchor, as: container, offset: -20)
+    ])
+
+
   }
   
 }
