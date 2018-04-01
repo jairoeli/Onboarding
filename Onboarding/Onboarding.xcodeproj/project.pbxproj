@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9C6A230C2071288B00C3DD74 /* DeviceSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6A230B2071288B00C3DD74 /* DeviceSize.swift */; };
 		9C7888611E48E4A500ED2C54 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7888601E48E4A500ED2C54 /* AppDelegate.swift */; };
 		9C7888681E48E4A500ED2C54 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C7888671E48E4A500ED2C54 /* Assets.xcassets */; };
 		9C78886B1E48E4A500ED2C54 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C7888691E48E4A500ED2C54 /* LaunchScreen.storyboard */; };
@@ -22,9 +23,11 @@
 		9C78888B1E48E63800ED2C54 /* Dao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C78888A1E48E63800ED2C54 /* Dao.swift */; };
 		9C78888D1E48E66A00ED2C54 /* UserDefaults+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C78888C1E48E66A00ED2C54 /* UserDefaults+Helpers.swift */; };
 		9C78888F1E48E68A00ED2C54 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C78888E1E48E68A00ED2C54 /* Main.storyboard */; };
+		9CAA54782070685700C3C539 /* UIView+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CAA54772070685700C3C539 /* UIView+Constraints.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9C6A230B2071288B00C3DD74 /* DeviceSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceSize.swift; sourceTree = "<group>"; };
 		9C78885D1E48E4A500ED2C54 /* Onboarding.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Onboarding.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C7888601E48E4A500ED2C54 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9C7888671E48E4A500ED2C54 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -42,6 +45,7 @@
 		9C78888A1E48E63800ED2C54 /* Dao.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dao.swift; sourceTree = "<group>"; };
 		9C78888C1E48E66A00ED2C54 /* UserDefaults+Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Helpers.swift"; sourceTree = "<group>"; };
 		9C78888E1E48E68A00ED2C54 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		9CAA54772070685700C3C539 /* UIView+Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Constraints.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,9 +131,11 @@
 		9C7888871E48E60800ED2C54 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				9C6A230B2071288B00C3DD74 /* DeviceSize.swift */,
 				9C7888881E48E62300ED2C54 /* Extensions.swift */,
 				9C78888A1E48E63800ED2C54 /* Dao.swift */,
 				9C78888C1E48E66A00ED2C54 /* UserDefaults+Helpers.swift */,
+				9CAA54772070685700C3C539 /* UIView+Constraints.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -161,7 +167,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0820;
-				LastUpgradeCheck = 0900;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = DevMountain;
 				TargetAttributes = {
 					9C78885C1E48E4A500ED2C54 = {
@@ -211,10 +217,12 @@
 				9C7888801E48E5A900ED2C54 /* MainNavigationController.swift in Sources */,
 				9C7888751E48E52900ED2C54 /* Page.swift in Sources */,
 				9C78888B1E48E63800ED2C54 /* Dao.swift in Sources */,
+				9CAA54782070685700C3C539 /* UIView+Constraints.swift in Sources */,
 				9C7888611E48E4A500ED2C54 /* AppDelegate.swift in Sources */,
 				9C78887D1E48E58500ED2C54 /* LoginCell+TextField.swift in Sources */,
 				9C7888791E48E54C00ED2C54 /* PageCell.swift in Sources */,
 				9C78888D1E48E66A00ED2C54 /* UserDefaults+Helpers.swift in Sources */,
+				9C6A230C2071288B00C3DD74 /* DeviceSize.swift in Sources */,
 				9C7888891E48E62300ED2C54 /* Extensions.swift in Sources */,
 				9C7888861E48E5F200ED2C54 /* HomeController.swift in Sources */,
 				9C78887B1E48E56A00ED2C54 /* LoginCell.swift in Sources */,
@@ -250,6 +258,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -257,6 +266,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -283,7 +293,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -305,6 +315,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -312,6 +323,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -332,7 +344,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
